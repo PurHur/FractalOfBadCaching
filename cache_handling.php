@@ -1,12 +1,12 @@
 <?php
 // load cache
-$GLOBALS['cache'] = @include('cache.php');
+@include('cache.php');
 
 // save cache
 function saveCache()
 {
     // write cache file with loading code
-    $cache = "<?php\nreturn unserialize('".serialize($GLOBALS['cache'])."');\n";
+    $cache = "<?php\n$GLOBALS['cache'] = unserialize('".serialize($GLOBALS['cache'])."');\n";
     file_put_contents('cache.php',$cache);
 }
 
